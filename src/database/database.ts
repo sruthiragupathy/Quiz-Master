@@ -1,6 +1,8 @@
 import {QuizDatabase} from "./database.type"
-export const quizdatabase: QuizDatabase = {
+export const quizdatabase: QuizDatabase = [{
+    id: 1,
     genre: "Fashion",
+    description: "Take part in the amazing quiz and test your knowledge in fashion",
     playTime: 5,
     questions: [{
         question: "What is your name?",
@@ -17,4 +19,4 @@ export const quizdatabase: QuizDatabase = {
             }
         ]
     }]
-}
+}]

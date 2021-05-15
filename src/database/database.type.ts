@@ -10,8 +10,12 @@ export type Questions = {
     options: Options[]
 }
 
-export type QuizDatabase = {
+export type Object = {
+    id: number;
     genre: string;
+    description: string;
     playTime: number;
     questions: Questions[]
 }
+
+export type QuizDatabase = Object[]
