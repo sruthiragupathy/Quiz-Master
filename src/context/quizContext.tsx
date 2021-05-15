@@ -1,15 +1,22 @@
-import { State } from 'history';
 import React, { createContext, useContext, useReducer } from 'react';
 import { quizdatabase } from '../database/database';
+import { State } from './quizContext.type';
 import { quizReducer } from './quizReducer';
 
 const initialStates: State = {
 	quiz: quizdatabase,
 };
-const AppContext = createContext<State>({});
+const AppContext = createContext<{
+	quizState: State;
+	quizDispatch: React.Dispatch<any>;
+}>({
+	quizState: initialStates,
+	quizDispatch: () => null,
+});
 
 export const QuizProvider: React.FC = ({ children }) => {
 	const [quizState, quizDispatch] = useReducer(quizReducer, initialStates);
+	// console.log({ quizState });
 	return (
 		<AppContext.Provider value={{ quizState, quizDispatch }}>
 			{children}

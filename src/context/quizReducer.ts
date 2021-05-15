@@ -1,6 +1,7 @@
-import {State, ActionType} from "./quizContext.type";
 
-export const quizReducer = (state: State, action: ActionType): any=> {
+import { State, ActionType} from "./quizContext.type";
+
+export const quizReducer = (state: State, action: ActionType): State=> {
     switch(action.type){
         case "LOAD_QUIZ":
             return {
