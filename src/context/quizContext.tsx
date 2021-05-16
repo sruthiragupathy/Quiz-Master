@@ -5,6 +5,8 @@ import { quizReducer } from './quizReducer';
 
 const initialStates: State = {
 	quiz: quizdatabase,
+	currentQuestionNumber: -1,
+	score: 0,
 };
 const AppContext = createContext<{
 	quizState: State;

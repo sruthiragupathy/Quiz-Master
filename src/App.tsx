@@ -18,7 +18,7 @@ function App() {
 			<Routes>
 				<Route path='/' element={<Nav />}></Route>
 				<Route path='/dashboard' element={<Dashboard />}></Route>
-				<Route path='/quiz' element={<Quiz />}></Route>
+				<Route path='/quiz/:quizId' element={<Quiz />}></Route>
 			</Routes>
 		</div>
 	);

@@ -1,9 +1,11 @@
 export type Options = {
+    id: string;
     text: string;
     isRight: boolean;
 }
 
 export type Questions = {
+    id: string;
     question: string;
     points: number;
     negativePoints: number;
@@ -11,7 +13,7 @@ export type Questions = {
 }
 
 export type Object = {
-    id: number;
+    id: string;
     genre: string;
     description: string;
     playTime: number;
