@@ -10,4 +10,5 @@ export type State = {
 export type ActionType = 
 |{type: "LOAD_QUIZ", payload: [] | Object[]}
 |{type: "INCREMENT_QUESTION_NUMBER", payload?: number}
+|{type: "UPDATE_SCORE", payload: number}
 

@@ -25,7 +25,21 @@ export const Quiz = () => {
 		}
 	};
 	const isRightAnswer = (isRight: boolean) => {
-		isRight ? setResult('Right Answer') : setResult('Wrong Answer');
+		if (isRight) {
+			setResult('Right Answer');
+			quizDispatch({
+				type: 'UPDATE_SCORE',
+				payload: currentQuiz?.questions[quizState.currentQuestionNumber].points,
+			});
+		} else {
+			setResult('Wrong Answer');
+			quizDispatch({
+				type: 'UPDATE_SCORE',
+				payload:
+					currentQuiz?.questions[quizState.currentQuestionNumber]
+						.negativePoints,
+			});
+		}
 	};
 
 	return (
@@ -48,6 +62,7 @@ export const Quiz = () => {
 					)}
 					<button onClick={nextQuestion}>Next Question</button>
 					<div>{result}</div>
+					<div>Score: {quizState.score}</div>
 				</div>
 			) : (
 				<p>Your quiz has ended</p>
