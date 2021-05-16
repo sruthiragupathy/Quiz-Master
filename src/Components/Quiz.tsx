@@ -9,6 +9,7 @@ export const Quiz = () => {
 	const { quizId } = useParams();
 	const [currentQuiz, setCurrentQuiz] = useState<Object>();
 	const [result, setResult] = useState<string>('');
+	const [disableButtons, setDisableButtons] = useState<boolean>(false);
 
 	useEffect(() => {
 		const findCurrentQuiz = quizState.quiz.find((quiz) => {
@@ -23,6 +24,7 @@ export const Quiz = () => {
 				? quizDispatch({ type: 'INCREMENT_QUESTION_NUMBER', payload: -1 })
 				: quizDispatch({ type: 'INCREMENT_QUESTION_NUMBER' });
 		}
+		setDisableButtons((disableButtons) => !disableButtons);
 	};
 	const isRightAnswer = (isRight: boolean) => {
 		if (isRight) {
@@ -40,6 +42,7 @@ export const Quiz = () => {
 						.negativePoints,
 			});
 		}
+		setDisableButtons((disableButtons) => !disableButtons);
 	};
 
 	return (
@@ -54,7 +57,8 @@ export const Quiz = () => {
 							return (
 								<button
 									key={option.id}
-									onClick={() => isRightAnswer(option.isRight)}>
+									onClick={() => isRightAnswer(option.isRight)}
+									disabled={disableButtons}>
 									{option.text}
 								</button>
 							);
