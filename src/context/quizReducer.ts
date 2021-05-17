@@ -16,6 +16,10 @@ export const quizReducer = (state: State, action: ActionType): State=> {
             return{
                 ...state, score: state.score + action.payload
             }
+        case "INITIALIZE_SCORE":
+            return{
+                ...state, score:0
+            }
         case "UPDATE_RESULT":
             return {...state, result: {...state.result, resultArray: [...state.result?.resultArray, action.payload]}}
         case "UPDATE_QUIZID":

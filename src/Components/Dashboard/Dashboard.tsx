@@ -14,8 +14,7 @@ export const Dashboard = () => {
 			payload: quizId,
 		});
 		quizDispatch({
-			type: 'UPDATE_SCORE',
-			payload: 0,
+			type: 'INITIALIZE_SCORE',
 		});
 	};
 	return (
