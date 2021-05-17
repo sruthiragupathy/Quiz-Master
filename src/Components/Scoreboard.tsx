@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import { useQuiz } from '../context/quizContext';
+import { Header } from './Dashboard/Header';
 
 export const Scoreboard = () => {
 	const { quizState } = useQuiz();
@@ -30,6 +32,7 @@ export const Scoreboard = () => {
 	};
 	return (
 		<div className='h-screen relative'>
+			<Header />
 			<div className='h-3/5 bg-purple-600 w-full flex justify-center items-center rounded-b-3xl'>
 				<div className='bg-purple-200 flex rounded-full h-40 w-40 items-center justify-center text-purple-800'>
 					<div className='bg-gray-50 flex flex-col rounded-full h-28 w-28 items-center justify-center text-purple-800'>

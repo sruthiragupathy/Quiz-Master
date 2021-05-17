@@ -6,10 +6,13 @@ import { Routes, Route, Link } from 'react-router-dom';
 import { Scoreboard } from './Components/Scoreboard';
 const Nav = () => {
 	return (
-		<>
-			<Link to='/quiz'>Take Quiz</Link>
-			<Link to='/dashboard'>Go to Dashboard</Link>
-		</>
+		<div className='max-w-100, h-screen flex justify-center items-center'>
+			<Link to='/dashboard'>
+				<button className='py-2 px-4 bg-purple-600 hover: bg-purple-700 text-gray-50 rounded-xl outline-none'>
+					Go to Dashboard
+				</button>
+			</Link>
+		</div>
 	);
 };
 
