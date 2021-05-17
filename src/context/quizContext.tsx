@@ -11,7 +11,7 @@ const initialStates: State = {
 		quizId: '',
 		resultArray: [],
 	},
-	currentQuiz: {},
+	currentQuiz: null,
 };
 const AppContext = createContext<{
 	quizState: State;

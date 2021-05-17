@@ -14,7 +14,7 @@ export type State = {
         quizId: string;
         resultArray: Result[] | [];
     }
-    currentQuiz: {} | Object | undefined
+    currentQuiz: null| Object | undefined
 }
 
 export type ActionType = 

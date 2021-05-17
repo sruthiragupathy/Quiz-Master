@@ -20,7 +20,7 @@ export const CurrentQuestion = ({ currentQuiz }: Prop) => {
 				: quizDispatch({ type: 'INCREMENT_QUESTION_NUMBER' });
 		}
 		setDisableButtons(false);
-		if (!nextQuestion) {
+		if (!optionId) {
 			quizDispatch({
 				type: 'UPDATE_RESULT',
 				payload: {
@@ -33,6 +33,7 @@ export const CurrentQuestion = ({ currentQuiz }: Prop) => {
 				},
 			});
 		}
+		setOptionId('');
 	};
 	const isRightAnswer = (isRight: boolean, selectedOption: string) => {
 		if (isRight) {
@@ -74,6 +75,23 @@ export const CurrentQuestion = ({ currentQuiz }: Prop) => {
 			return 'bg-red-500 text-gray-50 hover:bg-red-600';
 		}
 		return '';
+	};
+
+	const viewScore = () => {
+		navigate(`/quiz/${currentQuiz.id}/scoreboard`, { replace: true });
+		if (!optionId) {
+			quizDispatch({
+				type: 'UPDATE_RESULT',
+				payload: {
+					id: currentQuiz.questions[quizState.currentQuestionNumber].id,
+					hasTaken: false,
+					selectedOption: '',
+					correctOption: currentQuiz.questions[
+						quizState.currentQuestionNumber
+					].options.find((option) => option.isRight)?.id,
+				},
+			});
+		}
 	};
 	return (
 		<div className='max-w-full flex justify-center items-center h-full'>
@@ -121,9 +139,7 @@ export const CurrentQuestion = ({ currentQuiz }: Prop) => {
 				currentQuiz.questions.length - 1 ? (
 					<button
 						className='p-2 bg-purple-700 text-gray-50 uppercase font-semibold text-sm'
-						onClick={() =>
-							navigate(`/quiz/${currentQuiz.id}/scoreboard`, { replace: true })
-						}>
+						onClick={viewScore}>
 						View Score
 					</button>
 				) : (

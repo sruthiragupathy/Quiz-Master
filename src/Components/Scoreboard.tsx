@@ -20,6 +20,14 @@ export const Scoreboard = () => {
 		);
 		return wrongAnswers.length;
 	};
+	const getTotalScore = (): number | null | undefined => {
+		const totalScore =
+			quizState.currentQuiz &&
+			quizState.currentQuiz.questions.reduce((acc, curr) => {
+				return acc + curr.points;
+			}, 0);
+		return totalScore;
+	};
 	return (
 		<div className='h-screen relative'>
 			<div className='h-3/5 bg-purple-600 w-full flex justify-center items-center rounded-b-3xl'>
@@ -27,7 +35,7 @@ export const Scoreboard = () => {
 					<div className='bg-gray-50 flex flex-col rounded-full h-28 w-28 items-center justify-center text-purple-800'>
 						<span className='font-bold text-xs'>Your score</span>
 						<span className='font-extrabold text-3xl'>
-							{quizState.score} / 10
+							{quizState.score} / {getTotalScore()}
 						</span>
 					</div>
 				</div>
@@ -36,7 +44,7 @@ export const Scoreboard = () => {
 				<div className='flex flex-col justify-between items-start'>
 					<div className='flex flex-col items-start mb-3 text-purple-700'>
 						<span>{getAttemptedPercentage()}</span>
-						<span className='text-xs'>completion</span>
+						<span className='text-xs'>Attempted</span>
 					</div>
 
 					<div className='flex flex-col items-start text-green-600 '>
