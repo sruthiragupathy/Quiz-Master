@@ -4,6 +4,16 @@ import { Header } from './Header';
 
 export const Dashboard = () => {
 	const { quizState, quizDispatch } = useQuiz();
+	const takeQuiz = (quizId: string): any => {
+		quizDispatch({
+			type: 'INCREMENT_QUESTION_NUMBER',
+			payload: 0,
+		});
+		quizDispatch({
+			type: 'UPDATE_QUIZID',
+			payload: quizId,
+		});
+	};
 	return (
 		<div>
 			<Header />
@@ -25,12 +35,7 @@ export const Dashboard = () => {
 										<button
 											className='py-2 px-4 bg-purple-600 text-gray-50 text-sm font-semibold rounded-lg hover:bg-purple-700 outline-none'
 											id={quiz.id}
-											onClick={() =>
-												quizDispatch({
-													type: 'INCREMENT_QUESTION_NUMBER',
-													payload: 0,
-												})
-											}>
+											onClick={() => takeQuiz(quiz.id)}>
 											TAKE QUIZ
 										</button>
 									</Link>

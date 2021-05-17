@@ -7,6 +7,11 @@ const initialStates: State = {
 	quiz: quizdatabase,
 	currentQuestionNumber: -1,
 	score: 0,
+	result: {
+		quizId: '',
+		resultArray: [],
+	},
+	currentQuiz: {},
 };
 const AppContext = createContext<{
 	quizState: State;

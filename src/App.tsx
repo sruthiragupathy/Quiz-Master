@@ -3,6 +3,7 @@ import './App.css';
 import './index.css';
 import { Dashboard, Quiz } from './Components/index';
 import { Routes, Route, Link } from 'react-router-dom';
+import { Scoreboard } from './Components/Scoreboard';
 const Nav = () => {
 	return (
 		<>
@@ -19,6 +20,7 @@ function App() {
 				<Route path='/' element={<Nav />}></Route>
 				<Route path='/dashboard' element={<Dashboard />}></Route>
 				<Route path='/quiz/:quizId' element={<Quiz />}></Route>
+				<Route path='/quiz/:quizId/scoreboard' element={<Scoreboard />}></Route>
 			</Routes>
 		</div>
 	);

@@ -16,6 +16,12 @@ export const quizReducer = (state: State, action: ActionType): State=> {
             return{
                 ...state, score: state.score + action.payload
             }
+        case "UPDATE_RESULT":
+            return {...state, result: {...state.result, resultArray: [...state.result?.resultArray, action.payload]}}
+        case "UPDATE_QUIZID":
+            return {...state, result: {...state.result, quizId: action.payload, resultArray:[]}}
+        case "LOAD_CURRENT_QUIZ":
+            return {...state, currentQuiz: action.payload}
         default:
             return state
     }

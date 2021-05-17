@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Navigate, useNavigate } from 'react-router';
 import { useQuiz } from '../context/quizContext';
 import { Questions } from '../database/database.type';
 import { Object } from '../database/database.type';
@@ -8,6 +9,7 @@ type Prop = {
 };
 
 export const CurrentQuestion = ({ currentQuiz }: Prop) => {
+	const navigate = useNavigate();
 	const { quizState, quizDispatch } = useQuiz();
 	const [disableButtons, setDisableButtons] = useState<boolean>(false);
 	const [optionId, setOptionId] = useState<string>('');
@@ -18,6 +20,19 @@ export const CurrentQuestion = ({ currentQuiz }: Prop) => {
 				: quizDispatch({ type: 'INCREMENT_QUESTION_NUMBER' });
 		}
 		setDisableButtons(false);
+		if (!nextQuestion) {
+			quizDispatch({
+				type: 'UPDATE_RESULT',
+				payload: {
+					id: currentQuiz.questions[quizState.currentQuestionNumber].id,
+					hasTaken: false,
+					selectedOption: '',
+					correctOption: currentQuiz.questions[
+						quizState.currentQuestionNumber
+					].options.find((option) => option.isRight)?.id,
+				},
+			});
+		}
 	};
 	const isRightAnswer = (isRight: boolean, selectedOption: string) => {
 		if (isRight) {
@@ -35,6 +50,17 @@ export const CurrentQuestion = ({ currentQuiz }: Prop) => {
 		}
 		setOptionId(selectedOption);
 		setDisableButtons((disableButtons) => !disableButtons);
+		quizDispatch({
+			type: 'UPDATE_RESULT',
+			payload: {
+				id: currentQuiz.questions[quizState.currentQuestionNumber].id,
+				hasTaken: true,
+				selectedOption: selectedOption,
+				correctOption: currentQuiz.questions[
+					quizState.currentQuestionNumber
+				].options.find((option) => option.isRight)?.id,
+			},
+		});
 	};
 
 	const styleRightAndWrongAnswers = (
@@ -88,12 +114,25 @@ export const CurrentQuestion = ({ currentQuiz }: Prop) => {
 						)}
 					</div>
 				</div>
-
-				<button
-					className='p-2 bg-purple-700 text-gray-50 uppercase font-semibold text-sm'
-					onClick={nextQuestion}>
-					Next Question
-				</button>
+				{console.log(
+					quizState.currentQuestionNumber === currentQuiz.questions.length - 1,
+				)}
+				{quizState.currentQuestionNumber ===
+				currentQuiz.questions.length - 1 ? (
+					<button
+						className='p-2 bg-purple-700 text-gray-50 uppercase font-semibold text-sm'
+						onClick={() =>
+							navigate(`/quiz/${currentQuiz.id}/scoreboard`, { replace: true })
+						}>
+						View Score
+					</button>
+				) : (
+					<button
+						className='p-2 bg-purple-700 text-gray-50 uppercase font-semibold text-sm'
+						onClick={nextQuestion}>
+						Next Question
+					</button>
+				)}
 			</div>
 		</div>
 	);
