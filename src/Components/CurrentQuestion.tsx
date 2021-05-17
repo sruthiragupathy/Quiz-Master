@@ -36,6 +36,7 @@ export const CurrentQuestion = ({ currentQuiz }: Prop) => {
 		setOptionId(selectedOption);
 		setDisableButtons((disableButtons) => !disableButtons);
 	};
+
 	const styleRightAndWrongAnswers = (
 		isRight: boolean,
 		selectedButtonId: string,

@@ -17,6 +17,7 @@ export type Object = {
     genre: string;
     description: string;
     playTime: number;
+    image: string;
     questions: Questions[]
 }
 
