@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { Navigate, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import { useQuiz } from '../context/quizContext';
-import { Questions } from '../database/database.type';
 import { Object } from '../database/database.type';
 
 type Prop = {
