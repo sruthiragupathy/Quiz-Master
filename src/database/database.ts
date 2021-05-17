@@ -7,24 +7,34 @@ export const quizdatabase: QuizDatabase = [{
     playTime: 5,
     questions: [{
         id: uuidv4(),
-        question: "What is your name?",
+        question: "Which fashion designer is credited with having launched the skinny silhouette for menswear in the 2000s?",
         points: 2,
         negativePoints: -2,
         options: [
             {
                 id: uuidv4(),
-                text: "Sruthi",
+                text: "Karl Lagerfeld",
+                isRight: false
+            },
+            {
+                id: uuidv4(),
+                text: "Hedi Slimane",
                 isRight: true
             },
             {
                 id: uuidv4(),
-                text: "Vision",
+                text: "Ralph Lauren",
+                isRight: false
+            },
+            {
+                id: uuidv4(),
+                text: "Raf Simons",
                 isRight: false
             }
         ]
     }, {
         id: uuidv4(),
-        question: "What is your nationality?",
+        question: "Which term describes a dress with a triangular silhouette?",
         points: 2,
         negativePoints: -2,
         options: [

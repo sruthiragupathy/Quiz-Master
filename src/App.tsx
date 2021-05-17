@@ -14,7 +14,7 @@ const Nav = () => {
 
 function App() {
 	return (
-		<div className='font-body flex-col justify-center align-center text-center text-gray-500'>
+		<div className='font-body flex-col justify-center align-center text-center text-gray-500 box-border'>
 			<Routes>
 				<Route path='/' element={<Nav />}></Route>
 				<Route path='/dashboard' element={<Dashboard />}></Route>
