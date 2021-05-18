@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import { useQuiz } from '../context/quizContext';
+import { CheckAnswers } from './CheckAnswers';
 import { Header } from './Dashboard/Header';
 
 export const Scoreboard = () => {
@@ -66,6 +66,7 @@ export const Scoreboard = () => {
 					</div>
 				</div>
 			</div>
+			<CheckAnswers />
 		</div>
 	);
 };

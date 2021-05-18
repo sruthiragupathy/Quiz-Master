@@ -12,13 +12,13 @@ export type State = {
     score: number;
     result: {
         quizId: string;
-        resultArray: Result[] | [];
+        resultArray: Result[];
     }
     currentQuiz: null| Object | undefined
 }
 
 export type ActionType = 
-|{type: "LOAD_QUIZ", payload: [] | Object[]}
+|{type: "LOAD_QUIZ", payload: Object[]}
 |{type: "INCREMENT_QUESTION_NUMBER", payload?: number}
 |{type: "UPDATE_SCORE", payload: number}
 |{type: "INITIALIZE_SCORE"}

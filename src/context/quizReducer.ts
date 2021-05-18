@@ -1,7 +1,6 @@
 import { State, ActionType} from "./quizContext.type";
 
 export const quizReducer = (state: State, action: ActionType): State=> {
-    console.log({action})
     switch(action.type){
         case "LOAD_QUIZ":
             return {

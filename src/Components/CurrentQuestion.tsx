@@ -131,9 +131,6 @@ export const CurrentQuestion = ({ currentQuiz }: Prop) => {
 						)}
 					</div>
 				</div>
-				{console.log(
-					quizState.currentQuestionNumber === currentQuiz.questions.length - 1,
-				)}
 				{quizState.currentQuestionNumber ===
 				currentQuiz.questions.length - 1 ? (
 					<button
