@@ -46,8 +46,8 @@ export const CheckAnswers = () => {
 			<div className='md:w-3/5 '>
 				{currentQuiz?.questions.map((quiz, index) => {
 					return (
-						<div className='flex flex-col justify-center items-center px-1'>
-							<div className='text-lg font-semibold mb-4'>
+						<div className='flex flex-col justify-center items-center px-1 '>
+							<div className='text-lg font-semibold mb-4 md: w-4/5 md:text-left'>
 								{index + 1}. {quiz.question}
 							</div>
 							<div className='flex flex-col w-4/5 mb-4'>

@@ -108,11 +108,11 @@ export const CurrentQuestion = ({ currentQuiz }: Prop) => {
 						<span className='font-extrabold text-3xl'>{quizState.score}</span>
 					</div>
 				</div>
-				<div className='flex flex-col justify-center items-center px-2'>
+				<div className='flex flex-col justify-center items-center w-4/5 px-2'>
 					<div className='text-lg font-semibold mb-8'>
 						{currentQuiz.questions[quizState.currentQuestionNumber].question}
 					</div>
-					<div className='flex flex-col w-4/5 mb-4'>
+					<div className='flex flex-col w-full mb-4'>
 						{currentQuiz.questions[quizState.currentQuestionNumber].options.map(
 							(option) => {
 								return (
