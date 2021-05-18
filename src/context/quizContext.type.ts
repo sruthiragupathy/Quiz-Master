@@ -21,7 +21,7 @@ export type ActionType =
 	| { type: 'LOAD_QUIZ'; payload: QuizDatabase }
 	| { type: 'INCREMENT_QUESTION_NUMBER'; payload?: number }
 	| { type: 'UPDATE_SCORE'; payload: number }
-	| { type: 'INITIALIZE_SCORE' }
+	| { type: 'INITIALIZE_QUESTION_NUMBER' }
 	| { type: 'UPDATE_RESULT'; payload: Result }
 	| { type: 'UPDATE_QUIZID'; payload: string }
 	| { type: 'LOAD_CURRENT_QUIZ'; payload: Object };

@@ -8,10 +8,7 @@ export const quizReducer = (state: State, action: ActionType): State => {
 				quiz: action.payload,
 			};
 		case 'INCREMENT_QUESTION_NUMBER':
-			const currentQuestionNumberTemp =
-				action.payload || action.payload === 0
-					? action.payload
-					: state.currentQuestionNumber + 1;
+			const currentQuestionNumberTemp = state.currentQuestionNumber + 1;
 			return {
 				...state,
 				currentQuestionNumber: currentQuestionNumberTemp,
@@ -21,10 +18,10 @@ export const quizReducer = (state: State, action: ActionType): State => {
 				...state,
 				score: state.score + action.payload,
 			};
-		case 'INITIALIZE_SCORE':
+		case 'INITIALIZE_QUESTION_NUMBER':
 			return {
 				...state,
-				score: 0,
+				currentQuestionNumber: 0,
 			};
 		case 'UPDATE_RESULT':
 			return {

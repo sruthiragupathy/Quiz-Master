@@ -6,15 +6,11 @@ export const Dashboard = () => {
 	const { quizState, quizDispatch } = useQuiz();
 	const takeQuiz = (quizId: string): any => {
 		quizDispatch({
-			type: 'INCREMENT_QUESTION_NUMBER',
-			payload: 0,
-		});
-		quizDispatch({
 			type: 'UPDATE_QUIZID',
 			payload: quizId,
 		});
 		quizDispatch({
-			type: 'INITIALIZE_SCORE',
+			type: 'INITIALIZE_QUESTION_NUMBER',
 		});
 	};
 	return (
