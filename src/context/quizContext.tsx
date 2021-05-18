@@ -3,7 +3,7 @@ import { quizdatabase } from '../database/database';
 import { State } from './quizContext.type';
 import { quizReducer } from './quizReducer';
 
-const initialStates: State = {
+export const initialStates: State = {
 	quiz: quizdatabase,
 	currentQuestionNumber: -1,
 	score: 0,
