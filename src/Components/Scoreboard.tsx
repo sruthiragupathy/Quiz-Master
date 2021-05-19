@@ -43,7 +43,7 @@ export const Scoreboard = () => {
 					</div>
 				</div>
 			</div>
-			<div className='absolute top-3/5 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 w-4/5 md:w-1/2 flex justify-between p-4 rounded-xl font-semibold shadow-2xl'>
+			<div className='absolute top-3/5 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 w-4/5 md:w-1/2 flex justify-between p-4 rounded-xl font-semibold shadow-2xl transition duration-500 ease-in-out'>
 				<div className='flex flex-col justify-between items-start'>
 					<div className='flex flex-col items-start mb-3 text-purple-600'>
 						<span>{getAttemptedPercentage()}</span>

@@ -47,12 +47,13 @@ describe('testing reducer', () => {
 
 	test('should initialize the currentQuestionNumber to 0', () => {
 		const action: ActionType = {
-			type: 'INITIALIZE_QUESTION_NUMBER',
+			type: 'INITIALIZE_QUESTION_NUMBER_AND_SCORE',
 		};
 		const state = quizReducer(initialStates, action);
 		expect(state).toEqual({
 			...initialStates,
 			currentQuestionNumber: 0,
+			score: 0,
 		});
 	});
 

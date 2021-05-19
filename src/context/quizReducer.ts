@@ -18,10 +18,11 @@ export const quizReducer = (state: State, action: ActionType): State => {
 				...state,
 				score: state.score + action.payload,
 			};
-		case 'INITIALIZE_QUESTION_NUMBER':
+		case 'INITIALIZE_QUESTION_NUMBER_AND_SCORE':
 			return {
 				...state,
 				currentQuestionNumber: 0,
+				score: 0,
 			};
 		case 'UPDATE_RESULT':
 			return {
