@@ -1,14 +1,29 @@
 import { Link } from 'react-router-dom';
-
+import { useTheme } from '../../context/ThemeContext';
+import light_mode_black_24dp from '../../database/assets/light_mode_white_24dp.svg';
+import dark_mode_black_24dp from '../../database/assets/dark_mode_black_24dp.svg';
 export const Header = () => {
+	const { theme, setTheme } = useTheme();
+
 	return (
 		<nav className=' md:mx-8 font-semibold flex justify-between items-center px-6 py-4 border-b '>
-			<Link to='/dashboard'>
-				<div className='text-purple-700 font-pacifico text-2xl'>
+			<Link to='/dashboard' className=''>
+				<div className='text-purple-700 dark:text-purple-500 italic font-semibold text-lg'>
 					amaara quiz
 				</div>
 			</Link>
-			<div>Hi Sruthi!</div>
+
+			<button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
+				{theme === 'light' ? (
+					<img
+						src={dark_mode_black_24dp}
+						alt='dark mode'
+						className='text-gray-800'
+					/>
+				) : (
+					<img src={light_mode_black_24dp} alt='light mode' />
+				)}
+			</button>
 		</nav>
 	);
 };

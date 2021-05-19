@@ -93,9 +93,9 @@ export const CurrentQuestion = ({ currentQuiz }: Prop) => {
 		}
 	};
 	return (
-		<div className='max-w-full flex justify-center items-center h-full'>
-			<div className='md:w-2/4 flex flex-col justify-center items-center my-auto text-gray-600'>
-				<div className='text-gray-700 text-lg font-semibold uppercase border-b-2 border-purple-700 my-6'>{`${currentQuiz.genre} quiz`}</div>
+		<div className='h-screen max-w-full flex justify-center items-center h-full text-gray-600 dark:text-gray-50'>
+			<div className='md:w-2/4 flex flex-col justify-center items-center my-auto'>
+				<div className='text-lg font-semibold uppercase border-b-2 border-purple-700 my-6'>{`${currentQuiz.genre} quiz`}</div>
 				<div className='flex justify-between w-full p-4 text-gray-400'>
 					<div>
 						<span className='font-extrabold text-3xl pr-1'>
@@ -117,10 +117,11 @@ export const CurrentQuestion = ({ currentQuiz }: Prop) => {
 							(option) => {
 								return (
 									<button
-										className={`bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-lg mb-6 ${styleRightAndWrongAnswers(
-											option.isRight,
-											option.id,
-										)}`}
+										className={`bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-lg mb-6 ${
+											styleRightAndWrongAnswers(option.isRight, option.id)
+												? styleRightAndWrongAnswers(option.isRight, option.id)
+												: 'dark:bg-gray-700'
+										}`}
 										key={option.id}
 										onClick={() => isRightAnswer(option.isRight, option.id)}
 										disabled={disableButtons}>

@@ -41,7 +41,7 @@ export const CheckAnswers = () => {
 	};
 
 	return (
-		<div className='mt-24 flex flex-col justify-center items-center my-auto text-gray-600'>
+		<div className='mt-24 flex flex-col justify-center items-center my-auto'>
 			<div className='text-2xl font-semibold mb-6'>Check Answers</div>
 			<div className='md:w-3/5 '>
 				{currentQuiz?.questions.map((quiz, index) => {
@@ -54,10 +54,11 @@ export const CheckAnswers = () => {
 								{quiz.options.map((option) => {
 									return (
 										<div
-											className={`bg-gray-100 px-4 py-2 rounded-lg mb-4 text-left  ${styleRightAndWrongAnswers(
-												option.id,
-												quiz.id,
-											)}`}>
+											className={`bg-gray-100 px-4 py-2 rounded-lg mb-4 text-left  ${
+												styleRightAndWrongAnswers(option.id, quiz.id)
+													? styleRightAndWrongAnswers(option.id, quiz.id)
+													: 'dark:bg-gray-700'
+											}`}>
 											{isOptionSelected(option.id, quiz.id) ? (
 												isRightAnswer(option.id, quiz.id) ? (
 													<div className='flex justify-between items-center'>

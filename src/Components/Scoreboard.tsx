@@ -31,9 +31,9 @@ export const Scoreboard = () => {
 		return totalScore;
 	};
 	return (
-		<div className='h-screen relative'>
+		<div className='relative'>
 			<Header />
-			<div className='h-3/5 bg-purple-600 w-full flex justify-center items-center rounded-b-3xl'>
+			<div className='h-80 bg-purple-600 w-full flex justify-center items-center rounded-b-3xl'>
 				<div className='bg-purple-200 flex rounded-full h-40 w-40 items-center justify-center text-purple-800'>
 					<div className='bg-gray-50 flex flex-col rounded-full h-28 w-28 items-center justify-center text-purple-800'>
 						<span className='font-bold text-xs'>Your score</span>
@@ -43,9 +43,9 @@ export const Scoreboard = () => {
 					</div>
 				</div>
 			</div>
-			<div className='absolute top-4/5 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white w-4/5 md:w-1/2 flex justify-between p-4 rounded-xl font-semibold shadow-2xl'>
+			<div className='absolute top-3/5 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 w-4/5 md:w-1/2 flex justify-between p-4 rounded-xl font-semibold shadow-2xl'>
 				<div className='flex flex-col justify-between items-start'>
-					<div className='flex flex-col items-start mb-3 text-purple-700'>
+					<div className='flex flex-col items-start mb-3 text-purple-600'>
 						<span>{getAttemptedPercentage()}</span>
 						<span className='text-xs'>Attempted</span>
 					</div>
