@@ -93,7 +93,7 @@ export const CurrentQuestion = ({ currentQuiz }: Prop) => {
 		}
 	};
 	return (
-		<div className='h-screen max-w-full flex justify-center items-center h-full text-gray-600 dark:text-gray-50'>
+		<div className='max-w-full flex justify-center items-center h-full text-gray-600 dark:text-gray-50'>
 			<div className='md:w-2/4 flex flex-col justify-center items-center my-auto'>
 				<div className='text-lg font-semibold uppercase border-b-2 border-purple-700 my-6'>{`${currentQuiz.genre} quiz`}</div>
 				<div className='flex justify-between w-full p-4 text-gray-400'>

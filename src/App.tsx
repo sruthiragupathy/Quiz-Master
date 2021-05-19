@@ -18,7 +18,7 @@ const Nav = () => {
 
 function App() {
 	return (
-		<div className='font-body text-center text-gray-500 box-border transition duration-500 ease-in-out dark:bg-gray-800 dark:text-gray-50'>
+		<div className='min-h-screen font-body text-center text-gray-500 box-border transition duration-500 ease-in-out dark:bg-gray-800 dark:text-gray-50'>
 			<Routes>
 				<Route path='/' element={<Nav />}></Route>
 				<Route path='/dashboard' element={<Dashboard />}></Route>
