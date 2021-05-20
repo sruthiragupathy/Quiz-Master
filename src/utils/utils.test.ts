@@ -86,11 +86,9 @@ describe('testing the utility functions of CheckAnswers component', () => {
 		);
 		const wrongAnswerStyle = styleRightAndWrongAnswers(
 			result.resultArray,
-			'100',
-			'1',
+			'111',
+			'2',
 		);
-		expect(wrongAnswerStyle).toEqual(
-			'bg-red-500 text-gray-50 hover:bg-red-600',
-		);
+		expect(wrongAnswerStyle).toBe('bg-red-500 text-gray-50 hover:bg-red-600');
 	});
 });

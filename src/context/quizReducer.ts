@@ -16,7 +16,7 @@ export const quizReducer = (state: State, action: ActionType): State => {
 		case 'UPDATE_SCORE':
 			return {
 				...state,
-				score: state.score + action.payload,
+				score: state.score + action.payload.points,
 			};
 		case 'INITIALIZE_QUESTION_NUMBER_AND_SCORE':
 			return {

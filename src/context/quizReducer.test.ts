@@ -10,16 +10,7 @@ describe('testing reducer', () => {
 			payload: [quizdatabase[0]],
 		};
 		const state = quizReducer(initialStates, action);
-		expect(state).toEqual({
-			quiz: [quizdatabase[0]],
-			currentQuestionNumber: -1,
-			score: 0,
-			result: {
-				quizId: '',
-				resultArray: [],
-			},
-			currentQuiz: null,
-		});
+		expect(state.quiz).toEqual([quizdatabase[0]]);
 	});
 
 	test('should increment the question number', () => {
@@ -27,22 +18,18 @@ describe('testing reducer', () => {
 			type: 'INCREMENT_QUESTION_NUMBER',
 		};
 		const state = quizReducer(initialStates, action);
-		expect(state).toEqual({
-			...initialStates,
-			currentQuestionNumber: 0,
-		});
+		expect(state.currentQuestionNumber).toEqual(0);
 	});
 
 	test('should update the score based on the input', () => {
 		const action: ActionType = {
 			type: 'UPDATE_SCORE',
-			payload: 2,
+			payload: {
+				points: 2,
+			},
 		};
 		const state = quizReducer(initialStates, action);
-		expect(state).toEqual({
-			...initialStates,
-			score: 2,
-		});
+		expect(state.score).toEqual(2);
 	});
 
 	test('should initialize the currentQuestionNumber to 0', () => {
@@ -98,9 +85,6 @@ describe('testing reducer', () => {
 			payload: quizdatabase[0],
 		};
 		const state = quizReducer(initialStates, action);
-		expect(state).toEqual({
-			...initialStates,
-			currentQuiz: quizdatabase[0],
-		});
+		expect(state.currentQuiz).toEqual(quizdatabase[0]);
 	});
 });

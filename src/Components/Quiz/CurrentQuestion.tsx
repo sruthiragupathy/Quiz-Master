@@ -38,14 +38,19 @@ export const CurrentQuestion = ({ currentQuiz }: Prop) => {
 		if (isRight) {
 			quizDispatch({
 				type: 'UPDATE_SCORE',
-				payload: currentQuiz?.questions[quizState.currentQuestionNumber].points,
+				payload: {
+					points:
+						currentQuiz?.questions[quizState.currentQuestionNumber].points,
+				},
 			});
 		} else {
 			quizDispatch({
 				type: 'UPDATE_SCORE',
-				payload:
-					currentQuiz?.questions[quizState.currentQuestionNumber]
-						.negativePoints,
+				payload: {
+					points:
+						currentQuiz?.questions[quizState.currentQuestionNumber]
+							.negativePoints,
+				},
 			});
 		}
 		setOptionId(selectedOption);
