@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { useQuiz } from '../context/quizContext';
-import { Object } from '../database/database.type';
+import { useQuiz } from '../../context/quizContext';
+import { Quiz } from '../../database/database.type';
 
 type Prop = {
-	currentQuiz: Object;
+	currentQuiz: Quiz;
 };
 
 export const CurrentQuestion = ({ currentQuiz }: Prop) => {

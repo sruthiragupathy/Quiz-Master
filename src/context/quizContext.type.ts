@@ -1,4 +1,4 @@
-import { Object, QuizDatabase } from '../database/database.type';
+import { Quiz, QuizDatabase } from '../database/database.type';
 
 export type Result = {
 	id: string;
@@ -7,14 +7,14 @@ export type Result = {
 	correctOption: string;
 };
 export type State = {
-	quiz: Object[];
+	quiz: Quiz[];
 	currentQuestionNumber: number;
 	score: number;
 	result: {
 		quizId: string;
 		resultArray: Result[];
 	};
-	currentQuiz: null | Object | undefined;
+	currentQuiz: null | Quiz;
 };
 
 export type ActionType =
@@ -24,4 +24,4 @@ export type ActionType =
 	| { type: 'INITIALIZE_QUESTION_NUMBER_AND_SCORE' }
 	| { type: 'UPDATE_RESULT'; payload: Result }
 	| { type: 'UPDATE_QUIZID'; payload: string }
-	| { type: 'LOAD_CURRENT_QUIZ'; payload: Object };
+	| { type: 'LOAD_CURRENT_QUIZ'; payload: Quiz };

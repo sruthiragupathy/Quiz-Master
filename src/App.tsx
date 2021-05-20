@@ -3,7 +3,7 @@ import './App.css';
 import './index.css';
 import { Dashboard, Quiz } from './Components/index';
 import { Routes, Route, Link } from 'react-router-dom';
-import { Scoreboard } from './Components/Scoreboard';
+import { Scoreboard } from './Components/Scoreboard/Scoreboard';
 const Nav = () => {
 	return (
 		<div className='max-w-100, h-screen flex justify-center items-center '>

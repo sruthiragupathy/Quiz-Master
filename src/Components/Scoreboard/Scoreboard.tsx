@@ -1,36 +1,16 @@
-import { useQuiz } from '../context/quizContext';
+import { useQuiz } from '../../context/quizContext';
 import { CheckAnswers } from './CheckAnswers';
-import { Header } from './Dashboard/Header';
-
+import { Header } from '../Dashboard/Header';
+import {
+	getAttemptedPercentage,
+	getRightAnswers,
+	getTotalScore,
+	getWrongAnswers,
+} from '../../utils/utils';
+import { Navigate } from 'react-router';
 export const Scoreboard = () => {
 	const { quizState } = useQuiz();
-	const getAttemptedPercentage = (): number => {
-		const attemptedQuizArray = quizState.result.resultArray.filter(
-			(result) => result.hasTaken,
-		);
-		return attemptedQuizArray.length;
-	};
-	const getRightAnswers = (): number => {
-		const rightAnswers = quizState.result.resultArray.filter(
-			(result) => result.correctOption === result.selectedOption,
-		);
-		return rightAnswers.length;
-	};
-	const getWrongAnswers = (): number => {
-		const wrongAnswers = quizState.result.resultArray.filter(
-			(result) => result.correctOption !== result.selectedOption,
-		);
-		return wrongAnswers.length;
-	};
-	const getTotalScore = (): number | null | undefined => {
-		const totalScore =
-			quizState.currentQuiz &&
-			quizState.currentQuiz.questions.reduce((acc, curr) => {
-				return acc + curr.points;
-			}, 0);
-		return totalScore;
-	};
-	return (
+	return quizState.currentQuiz ? (
 		<div className='relative'>
 			<Header />
 			<div className='h-80 bg-purple-600 w-full flex justify-center items-center rounded-b-3xl'>
@@ -38,7 +18,7 @@ export const Scoreboard = () => {
 					<div className='bg-gray-50 flex flex-col rounded-full h-28 w-28 items-center justify-center text-purple-800'>
 						<span className='font-bold text-xs'>Your score</span>
 						<span className='font-extrabold text-3xl'>
-							{quizState.score} / {getTotalScore()}
+							{quizState.score} / {getTotalScore(quizState?.currentQuiz)}
 						</span>
 					</div>
 				</div>
@@ -46,12 +26,12 @@ export const Scoreboard = () => {
 			<div className='absolute top-3/5 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 w-4/5 md:w-1/2 flex justify-between p-4 rounded-xl font-semibold shadow-2xl transition duration-500 ease-in-out'>
 				<div className='flex flex-col justify-between items-start'>
 					<div className='flex flex-col items-start mb-3 text-purple-600'>
-						<span>{getAttemptedPercentage()}</span>
+						<span>{getAttemptedPercentage(quizState.result.resultArray)}</span>
 						<span className='text-xs'>Attempted</span>
 					</div>
 
 					<div className='flex flex-col items-start text-green-600 '>
-						<span>{getRightAnswers()}</span>
+						<span>{getRightAnswers(quizState.result.resultArray)}</span>
 						<span className='text-xs'>Correct</span>
 					</div>
 				</div>
@@ -61,12 +41,14 @@ export const Scoreboard = () => {
 						<span className='text-xs'>Total Questions</span>
 					</div>
 					<div className='flex flex-col items-start text-red-600'>
-						<span>{getWrongAnswers()}</span>
+						<span>{getWrongAnswers(quizState.result.resultArray)}</span>
 						<span className='text-xs'>wrong</span>
 					</div>
 				</div>
 			</div>
 			<CheckAnswers />
 		</div>
+	) : (
+		<Navigate to='/dashboard'></Navigate>
 	);
 };
