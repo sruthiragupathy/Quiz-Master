@@ -1,44 +1,16 @@
 import { useQuiz } from '../../context/quizContext';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import CancelIcon from '@material-ui/icons/Cancel';
+import {
+	styleRightAndWrongAnswers,
+	isOptionSelected,
+	isRightAnswer,
+} from '../../utils/utils';
 
 export const CheckAnswers = () => {
 	const {
 		quizState: { result, currentQuiz },
 	} = useQuiz();
-
-	const isOptionSelected = (optionId: string, quizId: string) => {
-		const currentQuiz = result.resultArray.find(
-			(result) => result.id === quizId,
-		);
-		if (currentQuiz?.selectedOption === optionId) {
-			return true;
-		}
-		return false;
-	};
-
-	const isRightAnswer = (optionId: string, quizId: string): boolean => {
-		const currentQuiz = result.resultArray.find(
-			(result) => result.id === quizId,
-		);
-		return currentQuiz?.correctOption === optionId;
-	};
-
-	const styleRightAndWrongAnswers = (optionId: string, quizId: string) => {
-		if (isOptionSelected(optionId, quizId) && isRightAnswer(optionId, quizId)) {
-			return 'bg-green-500 text-gray-50 hover:bg-green-600';
-		}
-		if (
-			isOptionSelected(optionId, quizId) &&
-			!isRightAnswer(optionId, quizId)
-		) {
-			return 'bg-red-500 text-gray-50 hover:bg-red-600';
-		}
-		if (isRightAnswer(optionId, quizId)) {
-			return 'bg-green-500 text-gray-50 hover:bg-green-600';
-		}
-		return '';
-	};
 
 	return (
 		<div className='mt-24 flex flex-col justify-center items-center my-auto'>
@@ -57,12 +29,28 @@ export const CheckAnswers = () => {
 									return (
 										<div
 											className={`bg-gray-100 px-4 py-2 rounded-lg mb-4 text-left  ${
-												styleRightAndWrongAnswers(option.id, quiz.id)
-													? styleRightAndWrongAnswers(option.id, quiz.id)
+												styleRightAndWrongAnswers(
+													result.resultArray,
+													option.id,
+													quiz.id,
+												)
+													? styleRightAndWrongAnswers(
+															result.resultArray,
+															option.id,
+															quiz.id,
+													  )
 													: 'dark:bg-gray-700'
 											}`}>
-											{isOptionSelected(option.id, quiz.id) ? (
-												isRightAnswer(option.id, quiz.id) ? (
+											{isOptionSelected(
+												result.resultArray,
+												option.id,
+												quiz.id,
+											) ? (
+												isRightAnswer(
+													result.resultArray,
+													option.id,
+													quiz.id,
+												) ? (
 													<div className='flex justify-between items-center'>
 														<span>{option.text}</span>
 														<CheckCircleIcon />
