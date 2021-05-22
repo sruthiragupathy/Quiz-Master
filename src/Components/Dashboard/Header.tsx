@@ -6,10 +6,10 @@ export const Header = () => {
 	const { theme, setTheme } = useTheme();
 
 	return (
-		<nav className=' md:mx-8 font-semibold flex justify-between items-center px-6 py-4 border-b '>
+		<nav className=' md:mx-8 flex justify-between items-center px-6 py-4 border-b '>
 			<Link to='/dashboard' className=''>
-				<div className='text-purple-700 dark:text-purple-500 italic font-semibold text-lg'>
-					amaara quiz
+				<div className='text-purple-700 dark:text-purple-600 italic font-black text-lg'>
+					Amaara Quiz
 				</div>
 			</Link>
 
