@@ -10,7 +10,7 @@ export const Home = () => {
 	return (
 		<div>
 			<Header />
-			<div className='flex justify-evenly items-center mx-2 my-4 flex-wrap'>
+			<div className='flex justify-evenly items-center mx-2 my-6 flex-wrap'>
 				<div className='md:w-1/2 w-full'>
 					<img src={quiz_illustrator} alt='' className='w-full h-1/2' />
 				</div>
