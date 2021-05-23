@@ -12,6 +12,18 @@ export const CheckAnswers = () => {
 		quizState: { result, currentQuiz },
 	} = useQuiz();
 
+	const getStyleForRightAndWrongOptions = (
+		optionId: string,
+		quizId: string,
+	) => {
+		const rightAndWrongStyles = styleRightAndWrongAnswers(
+			result.resultArray,
+			optionId,
+			quizId,
+		);
+		return rightAndWrongStyles ? rightAndWrongStyles : 'dark:bg-gray-700';
+	};
+
 	return (
 		<div className='mt-24 flex flex-col justify-center items-center my-auto'>
 			<div className='text-2xl font-semibold mb-6'>Check Answers</div>
@@ -28,19 +40,10 @@ export const CheckAnswers = () => {
 								{quiz.options.map((option) => {
 									return (
 										<div
-											className={`bg-gray-100 px-4 py-2 rounded-lg mb-4 text-left  ${
-												styleRightAndWrongAnswers(
-													result.resultArray,
-													option.id,
-													quiz.id,
-												)
-													? styleRightAndWrongAnswers(
-															result.resultArray,
-															option.id,
-															quiz.id,
-													  )
-													: 'dark:bg-gray-700'
-											}`}>
+											className={`bg-gray-100 px-4 py-2 rounded-lg mb-4 text-left  ${getStyleForRightAndWrongOptions(
+												option.id,
+												quiz.id,
+											)}`}>
 											{isOptionSelected(
 												result.resultArray,
 												option.id,

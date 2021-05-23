@@ -6,7 +6,6 @@ import { CurrentQuestion } from './CurrentQuestion';
 export const Quiz = () => {
 	const { quizState, quizDispatch } = useQuiz();
 	const { quizId } = useParams();
-	// console.log({ quizState });
 
 	useEffect(() => {
 		const findCurrentQuiz = quizState.quiz.find((quiz) => {
