@@ -4,7 +4,7 @@ import { Header } from './Header';
 
 export const Dashboard = () => {
 	const { quizState, quizDispatch } = useQuiz();
-	const takeQuiz = (quizId: string): any => {
+	const takeQuiz = (quizId: string) => {
 		quizDispatch({
 			type: 'UPDATE_QUIZID',
 			payload: quizId,

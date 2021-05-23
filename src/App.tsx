@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import './index.css';
-import { Dashboard, Quiz, Home } from './Components/index';
+import { Dashboard, Quiz, Home } from './Components';
 import { Routes, Route } from 'react-router-dom';
 import { Scoreboard } from './Components/Scoreboard/Scoreboard';
 

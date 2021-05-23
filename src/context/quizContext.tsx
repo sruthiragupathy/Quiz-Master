@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import { quizdatabase } from '../database/database';
-import { State } from './quizContext.type';
+import { QuizContext, State } from './quizContext.type';
 import { quizReducer } from './quizReducer';
 
 export const initialStates: State = {
@@ -13,13 +13,7 @@ export const initialStates: State = {
 	},
 	currentQuiz: null,
 };
-const AppContext = createContext<{
-	quizState: State;
-	quizDispatch: React.Dispatch<any>;
-}>({
-	quizState: initialStates,
-	quizDispatch: () => null,
-});
+const AppContext = createContext<QuizContext>({} as QuizContext);
 
 export const QuizProvider: React.FC = ({ children }) => {
 	const [quizState, quizDispatch] = useReducer(quizReducer, initialStates);

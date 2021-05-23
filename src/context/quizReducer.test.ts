@@ -32,7 +32,7 @@ describe('testing reducer', () => {
 		expect(state.score).toEqual(2);
 	});
 
-	test('should initialize the currentQuestionNumber to 0', () => {
+	test('should initialize the currentQuestionNumber and score to 0', () => {
 		const action: ActionType = {
 			type: 'INITIALIZE_QUESTION_NUMBER_AND_SCORE',
 		};

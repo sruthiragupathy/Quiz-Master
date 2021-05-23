@@ -17,6 +17,11 @@ export type State = {
 	currentQuiz: null | Quiz;
 };
 
+export type QuizContext = {
+	quizState: State;
+	quizDispatch: React.Dispatch<any>;
+};
+
 export type ActionType =
 	| { type: 'LOAD_QUIZ'; payload: QuizDatabase }
 	| { type: 'INCREMENT_QUESTION_NUMBER'; payload?: number }
