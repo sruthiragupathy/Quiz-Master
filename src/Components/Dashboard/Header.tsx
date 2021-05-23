@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
 import light_mode_black_24dp from '../../database/assets/light_mode_white_24dp.svg';
 import dark_mode_black_24dp from '../../database/assets/dark_mode_black_24dp.svg';
@@ -7,11 +7,11 @@ export const Header = () => {
 
 	return (
 		<nav className=' md:mx-8 flex justify-between items-center px-6 py-4 border-b '>
-			<Link to='/dashboard' className=''>
+			<NavLink to='/' className=''>
 				<div className='text-purple-700 dark:text-purple-600 italic font-black text-lg'>
 					Amaara Quiz
 				</div>
-			</Link>
+			</NavLink>
 
 			<button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
 				{theme === 'light' ? (

@@ -13,11 +13,7 @@ export const CurrentQuestion = ({ currentQuiz }: Prop) => {
 	const [disableButtons, setDisableButtons] = useState<boolean>(false);
 	const [optionId, setOptionId] = useState<string>('');
 	const nextQuestion = () => {
-		if (currentQuiz) {
-			quizState.currentQuestionNumber === currentQuiz.questions.length - 1
-				? quizDispatch({ type: 'INCREMENT_QUESTION_NUMBER', payload: -1 })
-				: quizDispatch({ type: 'INCREMENT_QUESTION_NUMBER' });
-		}
+		quizDispatch({ type: 'INCREMENT_QUESTION_NUMBER' });
 		setDisableButtons(false);
 		if (!optionId) {
 			quizDispatch({
@@ -34,6 +30,7 @@ export const CurrentQuestion = ({ currentQuiz }: Prop) => {
 		}
 		setOptionId('');
 	};
+
 	const isRightAnswer = (isRight: boolean, selectedOption: string) => {
 		if (isRight) {
 			quizDispatch({
@@ -97,6 +94,7 @@ export const CurrentQuestion = ({ currentQuiz }: Prop) => {
 			});
 		}
 	};
+
 	return (
 		<div className='max-w-full flex justify-center items-center h-full text-gray-600 dark:text-gray-50'>
 			<div className='md:w-2/4 flex flex-col justify-center items-center my-auto'>
