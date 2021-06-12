@@ -5,6 +5,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+	* {
+		@apply m-0 p-0 box-border;
+	}
+
+	body {
+		@apply font-body min-h-screen h-full;
+	}
+}
+
 @layer components {
 	.img-logo {
 		@apply font-semibold rounded-full h-6 w-6 p-5 flex items-center justify-center mr-3 border-2 border-purple-700 bg-purple-700 text-gray-50;

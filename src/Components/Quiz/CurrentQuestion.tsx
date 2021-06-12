@@ -122,11 +122,11 @@ export const CurrentQuestion = ({ currentQuiz }: Prop) => {
 						type: 'LOAD_CURRENT_USER_SCORE_BOARD',
 						payload: attemptedQuizScores,
 					});
-				navigate(`/quiz/${currentQuiz._id}/scoreboard`, { replace: true });
 			} catch (error) {
 				console.error({ error });
 			}
 		}
+		navigate(`/quiz/${currentQuiz._id}/scoreboard`, { replace: true });
 	};
 
 	return (

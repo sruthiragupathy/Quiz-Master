@@ -11,13 +11,10 @@ export const Dashboard = () => {
 			type: 'UPDATE_QUIZID',
 			payload: quizId,
 		});
-		quizDispatch({
-			type: 'INITIALIZE_QUESTION_NUMBER_AND_SCORE',
-		});
 	};
 	const quizCard = (quiz: Quiz) => {
 		return (
-			<div className='w-full md:shadow-lg rounded-xl'>
+			<div className='w-full md:shadow-lg rounded-xl' key={quiz._id}>
 				<div className='w-full'>
 					<img src={quiz.image} alt={quiz.genre} />
 				</div>

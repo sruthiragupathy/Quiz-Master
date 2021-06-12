@@ -5,7 +5,6 @@ import dark_mode_black_24dp from '../../database/assets/dark_mode_black_24dp.svg
 import { useAuthentication } from '../../context/authenticationContext';
 import { Equalizer, ExitToApp } from '@material-ui/icons';
 import PersonIcon from '@material-ui/icons/Person';
-import EqualizerIcon from '@material-ui/icons/Equalizer';
 
 export const Header = () => {
 	const { theme, setTheme } = useTheme();
@@ -51,7 +50,8 @@ export const Header = () => {
 				)}
 				<NavLink
 					to='/leaderboard'
-					className='mr-6 text-gray-700 dark:text-gray-50'>
+					className='mr-6 text-gray-700 dark:text-gray-50'
+					title='leaderboard'>
 					<Equalizer />
 				</NavLink>
 

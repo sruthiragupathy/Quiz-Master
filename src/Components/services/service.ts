@@ -29,7 +29,6 @@ const getLeaderBoard = async (quizDispatch: React.Dispatch<any>) => {
 		method: 'GET',
 		url: `${BACKEND}/leaderboard`,
 	});
-	console.log({ leaderboard });
 	if (status === 200) {
 		quizDispatch({
 			type: 'SET_LEADERBOARD',
