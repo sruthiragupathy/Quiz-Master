@@ -56,7 +56,7 @@ export const SignUp = () => {
 					Play some awesome Quizzes and have fun
 				</div>
 			</div>
-			<div className='flex flex-col items-start mx-4 justify-center w-full md:w-1/2 text-gray-500 my-2'>
+			<div className='flex flex-col items-start mx-4 justify-center w-full md:w-1/2 text-gray-500 my-2 dark:text-gray-50'>
 				<h2 className='font-semibold text-2xl mb-2 '>
 					Sign Up into Amaara Quizzes
 				</h2>

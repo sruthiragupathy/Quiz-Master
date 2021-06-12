@@ -52,12 +52,12 @@ export const Login = () => {
 				<div className='font-bold mb-6 text-lg italic'>Amaara Spaces</div>
 				<div className='font-bold text-xl'>Have fun playing Quizzes</div>
 			</div>
-			<div className='flex flex-col items-start mx-4 justify-center w-full md:w-1/2 text-gray-500'>
+			<div className='flex flex-col items-start mx-4 justify-center w-full md:w-1/2 text-gray-500 dark:text-gray-50'>
 				<h2 className='font-semibold text-2xl mb-6 '>
 					Sign in to Amaara Quizzes
 				</h2>
 				<form
-					className='flex flex-col w-full items-start text-left'
+					className='flex flex-col w-full items-start text-left dark:text-gray-50'
 					onSubmit={(e) => onLoginClicked(e)}>
 					<div className='mb-6 md:w-9/12 w-full'>
 						<label className='mb-2 font-semibold block'>Email Address</label>
