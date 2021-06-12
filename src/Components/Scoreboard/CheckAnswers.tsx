@@ -41,18 +41,18 @@ export const CheckAnswers = () => {
 									return (
 										<div
 											className={`bg-gray-100 px-4 py-2 rounded-lg mb-4 text-left  ${getStyleForRightAndWrongOptions(
-												option.id,
-												quiz.id,
+												option._id,
+												quiz._id,
 											)}`}>
 											{isOptionSelected(
 												result.resultArray,
-												option.id,
-												quiz.id,
+												option._id,
+												quiz._id,
 											) ? (
 												isRightAnswer(
 													result.resultArray,
-													option.id,
-													quiz.id,
+													option._id,
+													quiz._id,
 												) ? (
 													<div className='flex justify-between items-center'>
 														<span>{option.text}</span>

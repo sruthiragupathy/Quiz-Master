@@ -19,12 +19,12 @@ export const CurrentQuestion = ({ currentQuiz }: Prop) => {
 			quizDispatch({
 				type: 'UPDATE_RESULT',
 				payload: {
-					id: currentQuiz.questions[quizState.currentQuestionNumber].id,
+					id: currentQuiz.questions[quizState.currentQuestionNumber]._id,
 					hasTaken: false,
 					selectedOption: '',
 					correctOption: currentQuiz.questions[
 						quizState.currentQuestionNumber
-					].options.find((option) => option.isRight)?.id,
+					].options.find((option) => option.isRight)?._id,
 				},
 			});
 		}
@@ -55,12 +55,12 @@ export const CurrentQuestion = ({ currentQuiz }: Prop) => {
 		quizDispatch({
 			type: 'UPDATE_RESULT',
 			payload: {
-				id: currentQuiz.questions[quizState.currentQuestionNumber].id,
+				id: currentQuiz.questions[quizState.currentQuestionNumber]._id,
 				hasTaken: true,
 				selectedOption: selectedOption,
 				correctOption: currentQuiz.questions[
 					quizState.currentQuestionNumber
-				].options.find((option) => option.isRight)?.id,
+				].options.find((option) => option.isRight)?._id,
 			},
 		});
 	};
@@ -79,17 +79,17 @@ export const CurrentQuestion = ({ currentQuiz }: Prop) => {
 	};
 
 	const viewScore = () => {
-		navigate(`/quiz/${currentQuiz.id}/scoreboard`, { replace: true });
+		navigate(`/quiz/${currentQuiz._id}/scoreboard`, { replace: true });
 		if (!optionId) {
 			quizDispatch({
 				type: 'UPDATE_RESULT',
 				payload: {
-					id: currentQuiz.questions[quizState.currentQuestionNumber].id,
+					id: currentQuiz.questions[quizState.currentQuestionNumber]._id,
 					hasTaken: false,
 					selectedOption: '',
 					correctOption: currentQuiz.questions[
 						quizState.currentQuestionNumber
-					].options.find((option) => option.isRight)?.id,
+					].options.find((option) => option.isRight)?._id,
 				},
 			});
 		}
@@ -121,12 +121,12 @@ export const CurrentQuestion = ({ currentQuiz }: Prop) => {
 								return (
 									<button
 										className={`bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-lg mb-6 ${
-											styleRightAndWrongAnswers(option.isRight, option.id)
-												? styleRightAndWrongAnswers(option.isRight, option.id)
+											styleRightAndWrongAnswers(option.isRight, option._id)
+												? styleRightAndWrongAnswers(option.isRight, option._id)
 												: 'dark:bg-gray-700'
 										}`}
-										key={option.id}
-										onClick={() => isRightAnswer(option.isRight, option.id)}
+										key={option._id}
+										onClick={() => isRightAnswer(option.isRight, option._id)}
 										disabled={disableButtons}>
 										{option.text}
 									</button>

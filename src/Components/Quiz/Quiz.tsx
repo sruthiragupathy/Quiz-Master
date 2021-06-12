@@ -9,7 +9,7 @@ export const Quiz = () => {
 
 	useEffect(() => {
 		const findCurrentQuiz = quizState.quiz.find((quiz) => {
-			return quiz.id === quizId;
+			return quiz._id === quizId;
 		});
 		quizDispatch({ type: 'LOAD_CURRENT_QUIZ', payload: findCurrentQuiz });
 	}, []);

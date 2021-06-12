@@ -1,10 +1,14 @@
+import axios from 'axios';
 import React, { createContext, useContext, useReducer } from 'react';
-import { quizdatabase } from '../database/database';
+import { useEffect } from 'react';
+import { Quiz } from '../Components';
+
+import { BACKEND } from '../utils/api';
 import { QuizContext, State } from './quizContext.type';
 import { quizReducer } from './quizReducer';
 
 export const initialStates: State = {
-	quiz: quizdatabase,
+	quiz: [],
 	currentQuestionNumber: -1,
 	score: 0,
 	result: {
@@ -17,6 +21,19 @@ const AppContext = createContext<QuizContext>({} as QuizContext);
 
 export const QuizProvider: React.FC = ({ children }) => {
 	const [quizState, quizDispatch] = useReducer(quizReducer, initialStates);
+	useEffect(() => {
+		(async function () {
+			try {
+				const {
+					data: { quiz },
+					status,
+				} = await axios.get(`${BACKEND}/quiz`);
+				if (status === 200) {
+					quizDispatch({ type: 'LOAD_QUIZ', payload: quiz });
+				}
+			} catch (error) {}
+		})();
+	}, []);
 	return (
 		<AppContext.Provider value={{ quizState, quizDispatch }}>
 			{children}

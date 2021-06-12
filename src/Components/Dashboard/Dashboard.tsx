@@ -27,11 +27,11 @@ export const Dashboard = () => {
 						<div className='text-sm text-gray-400'>
 							{quiz.questions.length} Questions
 						</div>
-						<Link to={`/quiz/${quiz.id}`} key={quiz.id}>
+						<Link to={`/quiz/${quiz._id}`} key={quiz._id}>
 							<button
 								className='py-2 px-4 bg-purple-600 text-gray-50 text-sm font-semibold rounded-lg hover:bg-purple-700 outline-none'
-								id={quiz.id}
-								onClick={() => takeQuiz(quiz.id)}>
+								id={quiz._id}
+								onClick={() => takeQuiz(quiz._id)}>
 								TAKE QUIZ
 							</button>
 						</Link>
