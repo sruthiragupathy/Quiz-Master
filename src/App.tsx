@@ -18,44 +18,26 @@ function App() {
 	} = useAuthentication();
 	const { quizDispatch } = useQuiz();
 	useEffect(() => {
-		(async function () {
-			const {
-				data: { attemptedQuizScores },
-				status,
-			} = await axios({
-				method: 'GET',
-				url: `${BACKEND}/scoreboard`,
-				headers: {
-					authorization: token,
-				},
-			});
-			if (status === 200) {
-				quizDispatch({
-					type: 'LOAD_CURRENT_USER_SCORE_BOARD',
-					payload: attemptedQuizScores,
+		token &&
+			(async function () {
+				const {
+					data: { attemptedQuizScores },
+					status,
+				} = await axios({
+					method: 'GET',
+					url: `${BACKEND}/scoreboard`,
+					headers: {
+						authorization: token,
+					},
 				});
-			}
-		})();
-
-		(async function () {
-			const {
-				data: { attemptedQuizScores },
-				status,
-			} = await axios({
-				method: 'GET',
-				url: `${BACKEND}/scoreboard`,
-				headers: {
-					authorization: token,
-				},
-			});
-			if (status === 200) {
-				quizDispatch({
-					type: 'LOAD_CURRENT_USER_SCORE_BOARD',
-					payload: attemptedQuizScores,
-				});
-			}
-		})();
-	}, []);
+				if (status === 200) {
+					quizDispatch({
+						type: 'LOAD_CURRENT_USER_SCORE_BOARD',
+						payload: attemptedQuizScores,
+					});
+				}
+			})();
+	}, [token]);
 	return (
 		<div className='min-h-screen font-body text-center text-gray-500 box-border transition duration-500 ease-in-out dark:bg-gray-800 dark:text-gray-50'>
 			<Routes>
