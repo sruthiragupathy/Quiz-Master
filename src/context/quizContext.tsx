@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { createContext, useContext, useReducer } from 'react';
 import { useEffect } from 'react';
-import { Quiz } from '../Components';
 
 import { BACKEND } from '../utils/api';
 import { QuizContext, State } from './quizContext.type';

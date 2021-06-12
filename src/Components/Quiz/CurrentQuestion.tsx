@@ -1,7 +1,11 @@
+import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import { useParams } from 'react-router-dom';
+import { useAuthentication } from '../../context/authenticationContext';
 import { useQuiz } from '../../context/quizContext';
 import { Quiz } from '../../database/database.type';
+import { BACKEND } from '../../utils/api';
 
 type Prop = {
 	currentQuiz: Quiz;
@@ -9,9 +13,13 @@ type Prop = {
 
 export const CurrentQuestion = ({ currentQuiz }: Prop) => {
 	const navigate = useNavigate();
+	const { quizId } = useParams();
 	const { quizState, quizDispatch } = useQuiz();
 	const [disableButtons, setDisableButtons] = useState<boolean>(false);
 	const [optionId, setOptionId] = useState<string>('');
+	const {
+		authState: { token },
+	} = useAuthentication();
 	const nextQuestion = () => {
 		quizDispatch({ type: 'INCREMENT_QUESTION_NUMBER' });
 		setDisableButtons(false);
@@ -78,8 +86,7 @@ export const CurrentQuestion = ({ currentQuiz }: Prop) => {
 		return '';
 	};
 
-	const viewScore = () => {
-		navigate(`/quiz/${currentQuiz._id}/scoreboard`, { replace: true });
+	const viewScore = async () => {
 		if (!optionId) {
 			quizDispatch({
 				type: 'UPDATE_RESULT',
@@ -92,6 +99,33 @@ export const CurrentQuestion = ({ currentQuiz }: Prop) => {
 					].options.find((option) => option.isRight)?._id,
 				},
 			});
+		}
+
+		if (token) {
+			try {
+				const {
+					data: { attemptedQuizScores },
+					status,
+				} = await axios({
+					method: 'POST',
+					url: `${BACKEND}/scoreboard`,
+					data: {
+						score: quizState.score,
+						quizId,
+					},
+					headers: {
+						authorization: token,
+					},
+				});
+				if (status === 200)
+					quizDispatch({
+						type: 'LOAD_CURRENT_USER_SCORE_BOARD',
+						payload: attemptedQuizScores,
+					});
+				navigate(`/quiz/${currentQuiz._id}/scoreboard`, { replace: true });
+			} catch (error) {
+				console.error({ error });
+			}
 		}
 	};
 

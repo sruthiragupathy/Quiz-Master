@@ -11,7 +11,6 @@ import { useEffect } from 'react';
 import { BACKEND } from './utils/api';
 
 function App() {
-	const quiz = useQuiz();
 	const {
 		authState: { token },
 	} = useAuthentication();
