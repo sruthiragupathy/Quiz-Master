@@ -1,10 +1,15 @@
-import { NavLink } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Navigate, NavLink, useNavigate } from 'react-router-dom';
+import { useAuthentication } from '../../context/authenticationContext';
 import { useQuiz } from '../../context/quizContext';
 import { ScoreBoard } from '../../context/quizContext.type';
 import { getTotalScore } from '../../utils/utils';
 
 export const Scorecard = ({ quizRecord }: { quizRecord: ScoreBoard }) => {
 	const { _id, quizId, score, numberOfAttempts } = quizRecord;
+	const {
+		authState: { token },
+	} = useAuthentication();
 	const { quizDispatch } = useQuiz();
 	const takeQuiz = (quizId: string) => {
 		quizDispatch({
@@ -15,6 +20,11 @@ export const Scorecard = ({ quizRecord }: { quizRecord: ScoreBoard }) => {
 			type: 'INITIALIZE_QUESTION_NUMBER_AND_SCORE',
 		});
 	};
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		!token && navigate('/');
+	}, [token]);
 	return (
 		<div className='text-left w-full md:w-4/6 border-2 border-purple-600 rounded-md flex justify-between p-4 mt-10'>
 			<div key={_id} className='min-h-24 flex flex-col justify-between'>

@@ -29,17 +29,22 @@ export const LeaderBoard = () => {
 								{user.userId.firstName[0]}
 								{user.userId.lastName[0]}
 							</div>
-							<div className='text-left'>
+							<div className='flex flex-col items-start justify-start w-1/2 ml-10'>
 								<div className='capitalize font-semibold text-lg'>
 									{user.userId.firstName} {user.userId.lastName}
 								</div>
 								<div>@{user.userId.userName}</div>
 							</div>
-							<div className='flex w-20 justify-between items-center text-purple-600'>
-								<StarIcon color='inherit' />
+							<div>
+								<div className='capitalize font-semibold text-lg'>
+									{user.quizId.genre}
+								</div>
+								<div className='flex w-20 justify-between items-center text-purple-600'>
+									<StarIcon color='inherit' />
 
-								<div className='flex text-lg font-semibold text-gray-600 dark:text-gray-50'>
-									{user.score} / {getTotalScore(user.quizId)}
+									<div className='flex text-lg font-semibold text-gray-600 dark:text-gray-50'>
+										{user.score} / {getTotalScore(user.quizId)}
+									</div>
 								</div>
 							</div>
 						</div>

@@ -10,6 +10,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { BACKEND } from './utils/api';
 import { LeaderBoard } from './Components/Dashboard/LeaderBoard';
+import { SignUp } from './Components/Authentication/Signup';
 
 function App() {
 	const {
@@ -64,6 +65,8 @@ function App() {
 				<Route path='/profile/:username' element={<ScoreTracker />}></Route>
 				<Route path='/' element={<Home />}></Route>
 				<Route path='/login' element={<Login />}></Route>
+				<Route path='/signup' element={<SignUp />}></Route>
+
 				<Route path='/leaderboard' element={<LeaderBoard />}></Route>
 			</Routes>
 		</div>

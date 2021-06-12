@@ -14,12 +14,27 @@ export type AuthContext = {
 		pathTo,
 	}: LoginUserDetails) => Promise<string>;
 	logoutUser: () => void;
+	signUpNewUser: ({
+		email,
+		password,
+		firstName,
+		lastName,
+		userName,
+	}: SignUpUserDetails) => Promise<any>;
 };
 
 export type LoginUserDetails = {
 	email: string;
 	password: string;
 	pathTo: string;
+};
+
+export type SignUpUserDetails = {
+	email: string;
+	password: string;
+	userName: string;
+	firstName: string;
+	lastName: string;
 };
 
 export type AuthActionType =

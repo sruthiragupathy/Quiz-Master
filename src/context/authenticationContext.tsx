@@ -8,6 +8,7 @@ import {
 	AuthContext,
 	AuthInitialState,
 	LoginUserDetails,
+	SignUpUserDetails,
 } from './authenticationContext.type';
 import { authenticationReducer } from './authenticationReducer';
 
@@ -48,7 +49,47 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
 				authDispatch({ type: 'SET_USER', payload: data });
 				navigate(pathTo, { replace: true });
 			}
-			return '';
+			return 'SUCCESS';
+		} catch (error) {
+			console.log({ error });
+			return error?.response?.data?.error || 'Something went wrong';
+		}
+	};
+
+	const signUpNewUser = async ({
+		email,
+		password,
+		firstName,
+		lastName,
+		userName,
+	}: SignUpUserDetails) => {
+		try {
+			const { data, status } = await axios({
+				method: 'POST',
+				url: `${BACKEND}/signup`,
+				data: {
+					email,
+					password,
+					firstName,
+					lastName,
+					userName,
+				},
+			});
+			console.log({ data, status });
+			if (status === 200) {
+				await localStorage.setItem(
+					'QuizLogin',
+					JSON.stringify({
+						token: data.token,
+						username: data.userName,
+						userId: data.userId,
+						firstName: data.firstName,
+					}),
+				);
+				authDispatch({ type: 'SET_USER', payload: data });
+				navigate('/', { replace: true });
+			}
+			return 'SUCCESS';
 		} catch (error) {
 			console.log({ error });
 			return error?.response?.data?.error || 'Something went wrong';
@@ -64,7 +105,13 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
 	};
 	return (
 		<authContext.Provider
-			value={{ authState, authDispatch, loginUserWithCredentials, logoutUser }}>
+			value={{
+				authState,
+				authDispatch,
+				loginUserWithCredentials,
+				logoutUser,
+				signUpNewUser,
+			}}>
 			{children}
 		</authContext.Provider>
 	);
