@@ -30,7 +30,7 @@ export const Scorecard = ({ quizRecord }: { quizRecord: ScoreBoard }) => {
 					<span className='bg-green-600 text-white font-semibold p-1'>
 						Number of Attempts
 					</span>{' '}
-					: {numberOfAttempts}
+					: <span className='text-lg font-semibold'>{numberOfAttempts}</span>
 				</div>
 			</div>
 			<NavLink to={`/quiz/${quizRecord.quizId._id}`}>
