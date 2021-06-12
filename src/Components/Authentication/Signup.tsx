@@ -49,7 +49,7 @@ export const SignUp = () => {
 		setUser({ ...user, [e.target.name]: e.target.value });
 	};
 	return (
-		<div className='flex justify-between min-h-screen'>
+		<div className='flex justify-between min-h-screen text-left'>
 			<div className='hidden md:block w-1/3 bg-purple-100 min-h-screen flex flex-col items-start justify-center py-10 px-6 text-gray-600'>
 				<div className='font-bold mb-4 text-lg italic'>Amaara Spaces</div>
 				<div className='font-bold text-xl'>

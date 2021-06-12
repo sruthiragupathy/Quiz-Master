@@ -15,7 +15,7 @@ export const Header = () => {
 
 	return (
 		<nav className=' md:mx-8 flex justify-between items-center px-6 py-4 border-b '>
-			<NavLink to='/login' className=''>
+			<NavLink to='/' className=''>
 				<div className='text-purple-700 dark:text-purple-600 italic font-black text-md'>
 					Amaara
 				</div>

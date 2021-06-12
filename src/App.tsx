@@ -11,12 +11,16 @@ import { useEffect } from 'react';
 import { BACKEND } from './utils/api';
 import { LeaderBoard } from './Components/Dashboard/LeaderBoard';
 import { SignUp } from './Components/Authentication/Signup';
+import { getLeaderBoard } from './Components/services/service';
 
 function App() {
 	const {
 		authState: { token },
 	} = useAuthentication();
-	const { quizDispatch } = useQuiz();
+	const {
+		quizState: { currentUserScoreBoard },
+		quizDispatch,
+	} = useQuiz();
 	useEffect(() => {
 		token &&
 			(async function () {
@@ -38,6 +42,12 @@ function App() {
 				}
 			})();
 	}, [token]);
+
+	useEffect(() => {
+		(async function () {
+			await getLeaderBoard(quizDispatch);
+		})();
+	}, [currentUserScoreBoard]);
 	return (
 		<div className='min-h-screen font-body text-center text-gray-500 box-border transition duration-500 ease-in-out dark:bg-gray-800 dark:text-gray-50'>
 			<Routes>

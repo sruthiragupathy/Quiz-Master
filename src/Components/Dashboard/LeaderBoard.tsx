@@ -10,11 +10,7 @@ export const LeaderBoard = () => {
 		quizState: { currentUserScoreBoard, leaderBoard },
 		quizDispatch,
 	} = useQuiz();
-	useEffect(() => {
-		(async function () {
-			await getLeaderBoard(quizDispatch);
-		})();
-	}, [currentUserScoreBoard]);
+
 	return (
 		<>
 			<Header />
