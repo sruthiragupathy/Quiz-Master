@@ -16,6 +16,7 @@ export const initialStates: State = {
 		resultArray: [],
 	},
 	currentQuiz: null,
+	currentUserScoreBoard: [],
 };
 const AppContext = createContext<QuizContext>({} as QuizContext);
 

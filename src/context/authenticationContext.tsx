@@ -56,7 +56,6 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
 	};
 
 	const logoutUser = () => {
-		console.log('logout');
 		localStorage.removeItem('QuizLogin');
 		authDispatch({
 			type: 'SET_USER',

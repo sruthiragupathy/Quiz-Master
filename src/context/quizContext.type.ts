@@ -6,6 +6,15 @@ export type Result = {
 	selectedOption: string;
 	correctOption: string;
 };
+
+export type ScoreBoard = {
+	_id: string;
+	numberOfAttempts: Number;
+	quizId: Quiz;
+	score: Number;
+	userId: String;
+};
+
 export type State = {
 	quiz: Quiz[];
 	currentQuestionNumber: number;
@@ -15,6 +24,7 @@ export type State = {
 		resultArray: Result[];
 	};
 	currentQuiz: null | Quiz;
+	currentUserScoreBoard: ScoreBoard[];
 };
 
 export type QuizContext = {
@@ -29,4 +39,5 @@ export type ActionType =
 	| { type: 'INITIALIZE_QUESTION_NUMBER_AND_SCORE' }
 	| { type: 'UPDATE_RESULT'; payload: Result }
 	| { type: 'UPDATE_QUIZID'; payload: string }
-	| { type: 'LOAD_CURRENT_QUIZ'; payload: Quiz };
+	| { type: 'LOAD_CURRENT_QUIZ'; payload: Quiz }
+	| { type: 'LOAD_CURRENT_USER_SCORE_BOARD'; payload: ScoreBoard[] };

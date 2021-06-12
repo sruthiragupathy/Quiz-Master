@@ -9,7 +9,7 @@ import PersonIcon from '@material-ui/icons/Person';
 export const Header = () => {
 	const { theme, setTheme } = useTheme();
 	const {
-		authState: { token, firstName },
+		authState: { token, firstName, username },
 		logoutUser,
 	} = useAuthentication();
 
@@ -26,10 +26,11 @@ export const Header = () => {
 						<div className='font-semibold text-purple-600 text-md mr-6'>
 							Hi {firstName}
 						</div>
-						<NavLink to={`/profile/${firstName}`}>
-							<div
-								className='mr-6 text-gray-700 dark:text-gray-50'
-								title='profile'>
+						<NavLink
+							to={`/profile/${username}`}
+							activeClassName='text-purple-600'
+							className='text-gray-700'>
+							<div className='mr-6  dark:text-gray-50' title='profile'>
 								<PersonIcon color='inherit' />
 							</div>
 						</NavLink>

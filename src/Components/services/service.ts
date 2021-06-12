@@ -1,11 +1,7 @@
 import axios, { AxiosError } from 'axios';
 import { BACKEND } from '../../utils/api';
 
-import {
-	UserDetails,
-	AuthenticationResponse,
-	ErrorResponse,
-} from './service.type';
+import { UserDetails } from './service.type';
 
 const loginUser = async (user: UserDetails) => {
 	try {
@@ -13,7 +9,6 @@ const loginUser = async (user: UserDetails) => {
 			email: user.email,
 			password: user.password,
 		});
-		console.log({ data, status });
 		if (status === 200) {
 			localStorage.setItem('quizLogin', JSON.stringify(data));
 		}
