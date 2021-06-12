@@ -1,1 +1,1 @@
-export const BACKEND: string = 'http://localhost:3000/api';
+export const BACKEND: string = 'https://amaara-quiz.herokuapp.com/api';

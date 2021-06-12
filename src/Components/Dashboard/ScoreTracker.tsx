@@ -15,7 +15,7 @@ export const ScoreTracker = () => {
 			<div className='flex flex-col items-center justify-center'>
 				{currentUserScoreBoard.length !== 0 ? (
 					currentUserScoreBoard.map((quizRecord) => {
-						return <Scorecard quizRecord={quizRecord} />;
+						return <Scorecard quizRecord={quizRecord} key={quizRecord._id} />;
 					})
 				) : (
 					<div className='mt-20 font-semibold text-xl'>
