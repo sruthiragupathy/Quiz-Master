@@ -3,8 +3,9 @@ import { useTheme } from '../../context/ThemeContext';
 import light_mode_black_24dp from '../../database/assets/light_mode_white_24dp.svg';
 import dark_mode_black_24dp from '../../database/assets/dark_mode_black_24dp.svg';
 import { useAuthentication } from '../../context/authenticationContext';
-import { ExitToApp } from '@material-ui/icons';
+import { Equalizer, ExitToApp } from '@material-ui/icons';
 import PersonIcon from '@material-ui/icons/Person';
+import EqualizerIcon from '@material-ui/icons/Equalizer';
 
 export const Header = () => {
 	const { theme, setTheme } = useTheme();
@@ -17,7 +18,7 @@ export const Header = () => {
 		<nav className=' md:mx-8 flex justify-between items-center px-6 py-4 border-b '>
 			<NavLink to='/login' className=''>
 				<div className='text-purple-700 dark:text-purple-600 italic font-black text-md'>
-					Amaara Quiz
+					Amaara
 				</div>
 			</NavLink>
 			<div className='flex'>
@@ -48,6 +49,11 @@ export const Header = () => {
 						LOGIN
 					</NavLink>
 				)}
+				<NavLink
+					to='/leaderboard'
+					className='mr-6 text-gray-700 dark:text-gray-50'>
+					<Equalizer />
+				</NavLink>
 
 				<button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
 					{theme === 'light' ? (

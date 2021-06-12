@@ -15,6 +15,24 @@ export type ScoreBoard = {
 	userId: String;
 };
 
+export type User = {
+	_id: string;
+	createdAt: string;
+	updatedAt: string;
+	firstName: string;
+	lastName: string;
+	userName: string;
+	email: string;
+};
+
+export type LeaderBoard = {
+	_id: string;
+	numberOfAttempts: Number;
+	quizId: Quiz;
+	score: Number;
+	userId: User;
+};
+
 export type State = {
 	quiz: Quiz[];
 	currentQuestionNumber: number;
@@ -25,6 +43,7 @@ export type State = {
 	};
 	currentQuiz: null | Quiz;
 	currentUserScoreBoard: ScoreBoard[];
+	leaderBoard: LeaderBoard[];
 };
 
 export type QuizContext = {
@@ -40,4 +59,5 @@ export type ActionType =
 	| { type: 'UPDATE_RESULT'; payload: Result }
 	| { type: 'UPDATE_QUIZID'; payload: string }
 	| { type: 'LOAD_CURRENT_QUIZ'; payload: Quiz }
-	| { type: 'LOAD_CURRENT_USER_SCORE_BOARD'; payload: ScoreBoard[] };
+	| { type: 'LOAD_CURRENT_USER_SCORE_BOARD'; payload: ScoreBoard[] }
+	| { type: 'SET_LEADERBOARD'; payload: LeaderBoard[] };

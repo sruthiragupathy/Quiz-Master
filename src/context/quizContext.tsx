@@ -16,6 +16,7 @@ export const initialStates: State = {
 	},
 	currentQuiz: null,
 	currentUserScoreBoard: [],
+	leaderBoard: [],
 };
 const AppContext = createContext<QuizContext>({} as QuizContext);
 

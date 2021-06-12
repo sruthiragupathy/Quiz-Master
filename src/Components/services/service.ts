@@ -21,4 +21,21 @@ const loginUser = async (user: UserDetails) => {
 	}
 };
 
-export { loginUser };
+const getLeaderBoard = async (quizDispatch: React.Dispatch<any>) => {
+	const {
+		data: { leaderboard },
+		status,
+	} = await axios({
+		method: 'GET',
+		url: `${BACKEND}/leaderboard`,
+	});
+	console.log({ leaderboard });
+	if (status === 200) {
+		quizDispatch({
+			type: 'SET_LEADERBOARD',
+			payload: leaderboard,
+		});
+	}
+};
+
+export { loginUser, getLeaderBoard };

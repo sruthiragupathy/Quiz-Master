@@ -41,6 +41,8 @@ export const quizReducer = (state: State, action: ActionType): State => {
 			return { ...state, currentQuiz: action.payload };
 		case 'LOAD_CURRENT_USER_SCORE_BOARD':
 			return { ...state, currentUserScoreBoard: action.payload };
+		case 'SET_LEADERBOARD':
+			return { ...state, leaderBoard: action.payload };
 		default:
 			return state;
 	}

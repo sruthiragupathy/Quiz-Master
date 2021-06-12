@@ -9,6 +9,7 @@ import { useAuthentication } from './context/authenticationContext';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { BACKEND } from './utils/api';
+import { LeaderBoard } from './Components/Dashboard/LeaderBoard';
 
 function App() {
 	const {
@@ -16,6 +17,25 @@ function App() {
 	} = useAuthentication();
 	const { quizDispatch } = useQuiz();
 	useEffect(() => {
+		(async function () {
+			const {
+				data: { attemptedQuizScores },
+				status,
+			} = await axios({
+				method: 'GET',
+				url: `${BACKEND}/scoreboard`,
+				headers: {
+					authorization: token,
+				},
+			});
+			if (status === 200) {
+				quizDispatch({
+					type: 'LOAD_CURRENT_USER_SCORE_BOARD',
+					payload: attemptedQuizScores,
+				});
+			}
+		})();
+
 		(async function () {
 			const {
 				data: { attemptedQuizScores },
@@ -44,6 +64,7 @@ function App() {
 				<Route path='/profile/:username' element={<ScoreTracker />}></Route>
 				<Route path='/' element={<Home />}></Route>
 				<Route path='/login' element={<Login />}></Route>
+				<Route path='/leaderboard' element={<LeaderBoard />}></Route>
 			</Routes>
 		</div>
 	);

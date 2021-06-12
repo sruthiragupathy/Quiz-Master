@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useQuiz } from '../../context/quizContext';
 import { Quiz } from '../../database/database.type';
 import { Header } from './Header';
+import { LeaderBoard } from './LeaderBoard';
 
 export const Dashboard = () => {
 	const { quizState, quizDispatch } = useQuiz();
