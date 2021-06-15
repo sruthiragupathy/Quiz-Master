@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Navigate, NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuthentication } from '../../context/authenticationContext';
 import { useQuiz } from '../../context/quizContext';
 import { ScoreBoard } from '../../context/quizContext.type';
