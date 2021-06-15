@@ -14,6 +14,8 @@
 - MongoDB
 - jwt authentication
 
+[Backend Code](https://github.com/sruthiragupathy/amaara-social-media-backend/tree/development)
+
 ## Functionalities implemented
 
 - Optional Login with jwt authentication
