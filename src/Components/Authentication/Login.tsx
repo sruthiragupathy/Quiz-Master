@@ -67,7 +67,7 @@ export const Login = () => {
 							value={user.email}
 							name='email'
 							onChange={(e) => onUserChanged(e)}
-							className='px-3 py-2 w-full 
+							className='px-3 py-2 w-full text-gray-700
 						 border focus:outline-none focus:ring focus:border-purple-700'
 						/>
 						{formError.email && (
@@ -76,7 +76,7 @@ export const Login = () => {
 							</span>
 						)}
 					</div>
-					<div className='mb-6 md:w-9/12 w-full'>
+					<div className='mb-6 md:w-9/12 w-full text-gray-700'>
 						<label className='mb-2 font-semibold block font-sm'>Password</label>
 
 						<input

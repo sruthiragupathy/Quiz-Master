@@ -71,7 +71,7 @@ export const SignUp = () => {
 							value={user.firstName}
 							name='firstName'
 							onChange={(e) => onUserChanged(e)}
-							className='px-3 py-2 w-full 
+							className='px-3 py-2 w-full text-gray-700 
 						 border focus:outline-none focus:ring focus:border-purple-700'
 						/>
 						{formError.firstName && (
@@ -88,7 +88,7 @@ export const SignUp = () => {
 							value={user.lastName}
 							name='lastName'
 							onChange={(e) => onUserChanged(e)}
-							className='px-3 py-2 w-full 
+							className='px-3 py-2 w-full text-gray-700
 						 border focus:outline-none focus:ring focus:border-purple-700'
 						/>
 						{formError.lastName && (
@@ -105,7 +105,7 @@ export const SignUp = () => {
 							value={user.userName}
 							name='userName'
 							onChange={(e) => onUserChanged(e)}
-							className='px-3 py-2 w-full 
+							className='px-3 py-2 w-full text-gray-700
 						 border focus:outline-none focus:ring focus:border-purple-700'
 						/>
 						{formError.userName && (
@@ -122,7 +122,7 @@ export const SignUp = () => {
 							value={user.email}
 							name='email'
 							onChange={(e) => onUserChanged(e)}
-							className='px-3 py-2 w-full 
+							className='px-3 py-2 w-full text-gray-700
 						 border focus:outline-none focus:ring focus:border-purple-700'
 						/>
 						{formError.email && (
@@ -140,7 +140,7 @@ export const SignUp = () => {
 							value={user.password}
 							name='password'
 							onChange={(e) => onUserChanged(e)}
-							className='px-3 py-2 w-full 
+							className='px-3 py-2 w-full text-gray-700
 						 border focus:outline-none focus:ring focus:border-purple-700'
 						/>
 						{formError.password && (
